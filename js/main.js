@@ -82,7 +82,15 @@
               console.log('level up!');
               showResetScreen();
             }
+            let boomSound = document.createElement('audio');
 
+            boomSound.src = "audio/explosion.mp3"
+            explosion.load();
+            boomSound.addEventListener('ended', function(){
+              document.body.removeChild(explosion);
+            });
+            document.body.appendChild(explosion);
+            boomSound.play();
             // create and play explosion sound
             
           }
@@ -135,10 +143,19 @@
     };
 
     bullets.push(newBullet);
+    let cheesylaser = document.createElement('audio');
 
+            cheesylaser.src = "audio/laser.mp3"
+            cheesylaser.load();
+            cheesylaser.addEventListener('ended', function(){
+              document.body.removeChild(laser);
+            });
+            document.body.appendChild(laser);
+            cheesylaser.play();
     // create and play cheesy laser sound
     
   }
+});
 
   function movePlayer(e) {
     mousePos = (e.clientX - theCanvas.offsetLeft) - player.width / 2;
